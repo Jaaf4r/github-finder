@@ -6,7 +6,7 @@ A responsive frontend application that searches for GitHub users and displays th
 
 - Search for a GitHub user by username
 - Display the user's avatar, name, bio, profile link, and public repository count
-- Display the five most recently updated public repositories
+- Display the six most recently updated public repositories
 - Show loading, error, and empty-repository states
 - Disable the search button while requests are running
 - Responsive layout with automatic light and dark themes
