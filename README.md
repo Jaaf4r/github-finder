@@ -1,4 +1,4 @@
-# GitHub Profile Finder
+# GitHub Finder
 
 A responsive frontend application that searches for GitHub users and displays their profile information and recently updated public repositories.
 
