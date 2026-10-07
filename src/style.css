@@ -1,0 +1,304 @@
+:root {
+	font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+	color: #1f2328;
+	background: #f6f8fa;
+
+	--surface: #ffffff;
+	--surface-muted: #f6f8fa;
+	--text: #1f2328;
+	--muted: #59636e;
+	--border: #d1d9e0;
+	--accent: #0969da;
+	--button: #1f883d;
+	--button-hover: #1a7f37;
+	--shadow: 0 18px 50px rgb(31 35 40 / 10%);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+[hidden] {
+	display: none !important;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background:
+		radial-gradient(circle at top, rgb(9 105 218 / 10%), transparent 30rem),
+		var(--surface-muted);
+	color: var(--text);
+}
+
+button,
+input {
+	font: inherit;
+}
+
+a {
+	color: var(--accent);
+}
+
+.app-shell {
+	width: min(900px, calc(100% - 2rem));
+	margin: 0 auto;
+	padding: 5rem 0;
+}
+
+h1 {
+	margin: 0;
+	font-size: clamp(2rem, 6vw, 3.5rem);
+	line-height: 1.05;
+	letter-spacing: -0.05em;
+}
+
+.intro {
+	max-width: 580px;
+	margin: 1rem 0 2rem;
+	color: var(--muted);
+	font-size: 1.1rem;
+	line-height: 1.7;
+}
+
+.search-form {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	gap: 0.75rem;
+	align-items: center;
+	padding: 1rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	box-shadow: var(--shadow);
+}
+
+.search-form label {
+	font-weight: 650;
+}
+
+.search-form input {
+	min-width: 0;
+	padding: 0.8rem 1rem;
+	color: var(--text);
+	background: var(--surface-muted);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+}
+
+.search-form input:focus {
+	outline: 3px solid rgb(9 105 218 / 20%);
+	border-color: var(--accent);
+}
+
+.search-form button {
+	padding: 0.8rem 1.1rem;
+	color: white;
+	font-weight: 700;
+	background: var(--button);
+	border: 0;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.search-form button:hover {
+	background: var(--button-hover);
+}
+
+.search-form button:disabled {
+	opacity: 0.65;
+	cursor: wait;
+}
+
+.status-message {
+	min-height: 1.5rem;
+	margin: 1rem 0;
+	color: var(--muted);
+}
+
+.profile-card {
+	display: grid;
+	grid-template-columns: 140px minmax(0, 1fr);
+	grid-template-areas:
+		"avatar name"
+		"avatar bio"
+		"avatar stats"
+		"avatar link"
+		"repos-title repos-title"
+		"repos repos";
+	gap: 0.75rem 1.5rem;
+	padding: 1.5rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	box-shadow: var(--shadow);
+	animation: appear 250ms ease-out;
+}
+
+#avatar {
+	grid-area: avatar;
+	width: 140px;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border: 1px solid var(--border);
+	border-radius: 50%;
+}
+
+#display-name {
+	grid-area: name;
+	align-self: end;
+	margin: 0;
+	font-size: 2rem;
+	letter-spacing: -0.03em;
+}
+
+#bio {
+	grid-area: bio;
+	margin: 0;
+	color: var(--muted);
+	line-height: 1.6;
+}
+
+.profile-card>p:not(#bio) {
+	grid-area: stats;
+	margin: 0;
+}
+
+#profile-link {
+	grid-area: link;
+	width: fit-content;
+	font-weight: 650;
+	text-decoration: none;
+}
+
+#profile-link:hover,
+.repo-link:hover {
+	text-decoration: underline;
+}
+
+.profile-card h3 {
+	grid-area: repos-title;
+	margin: 1.5rem 0 0;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border);
+}
+
+#repo-list {
+	grid-area: repos;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.repo-card {
+	padding: 1rem;
+	background: var(--surface-muted);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	transition:
+		transform 160ms ease,
+		border-color 160ms ease;
+}
+
+.repo-card:hover {
+	transform: translateY(-2px);
+	border-color: var(--accent);
+}
+
+.repo-link {
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.repo-description {
+	margin: 0.65rem 0 0;
+	color: var(--muted);
+	line-height: 1.5;
+}
+
+button:focus-visible,
+a:focus-visible {
+	outline: 3px solid rgb(9 105 218 / 30%);
+	outline-offset: 3px;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  padding: 1rem;
+  color: var(--muted);
+  text-align: center;
+  font-style: italic;
+}
+
+@keyframes appear {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (max-width: 620px) {
+	.app-shell {
+		padding: 2.5rem 0;
+	}
+
+	.search-form {
+		grid-template-columns: 1fr;
+	}
+
+	.profile-card {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"avatar"
+			"name"
+			"bio"
+			"stats"
+			"link"
+			"repos-title"
+			"repos";
+	}
+
+	#avatar {
+		justify-self: center;
+	}
+
+	#display-name {
+		text-align: center;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--surface: #161b22;
+		--surface-muted: #0d1117;
+		--text: #f0f6fc;
+		--muted: #8b949e;
+		--border: #30363d;
+		--accent: #58a6ff;
+		--button: #238636;
+		--button-hover: #2ea043;
+		--shadow: 0 18px 50px rgb(0 0 0 / 30%);
+
+		color: var(--text);
+		background: var(--surface-muted);
+	}
+}
